@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class ATM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Balance: ");
+            double balance = Double.parseDouble(sc.nextLine());
+            System.out.print("Withdraw: ");
+            double withdraw = Double.parseDouble(sc.nextLine());
+            if (withdraw <= 0) {
+                System.out.println("Withdrawal amount must be positive.");
+            } else if (withdraw % 100 != 0) {
+                System.out.println("Withdrawal amount must be in multiples of 100.");
+            } else if (withdraw > balance) {
+                System.out.println("Insufficient balance. Withdrawal failed.");
+            } else {
+                balance -= withdraw;
+                System.out.println("Withdrawal successful. Remaining balance:Rs" + balance);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+        }
+        sc.close();
+    }
+}
